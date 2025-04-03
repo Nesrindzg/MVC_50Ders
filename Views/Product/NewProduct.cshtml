@@ -1,0 +1,38 @@
+﻿@model MVC_50Ders.Models.Entity.tblUrunler
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Ürün</h2>
+<br />
+<form class="form-group" method="post">
+    <div>
+        <label>Ürün Adı</label>
+        <input type="text" name="urunAd" class="form-control" />
+    </div>
+    <br />
+    <div>
+        <label>Kategori Seçiniz</label>
+        @Html.DropDownListFor(m => m.tblKategoriler.kategoriID, (List<SelectListItem>)ViewBag.Kategoriler, "Seçiniz", new { @class = "form-control" })
+    </div>
+    <br />
+    <div>
+        <label>Markası</label>
+        <input type="text" name="Marka" class="form-control" />
+    </div>
+    <br />
+    <div>
+        <label>Fiyatı</label>
+        <input type="text" name="fiyat" class="form-control" />
+    </div>
+    <br />
+    <div>
+        <label>Stok Adeti</label>
+        <input type="text" name="stok" class="form-control" />
+    </div>
+    <br />
+    <div style="margin-top:10px;">
+        <button class="btn btn-primary">Ürün Ekle</button>
+    </div>
+</form>

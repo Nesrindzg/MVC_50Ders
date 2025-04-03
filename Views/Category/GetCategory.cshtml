@@ -1,0 +1,23 @@
+﻿@model MVC_50Ders.Models.Entity.tblKategoriler
+
+@{
+    ViewBag.Title = "GetCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Kategori Bilgilerini Getir & Güncelle</h2>
+@using (Html.BeginForm("Update", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.kategoriID, "Kategori ID")
+        @Html.TextBoxFor(m => m.kategoriID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.kategoriAd, "Kategori Adı")
+        @Html.TextBoxFor(m => m.kategoriAd, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-warning">Kategoriyi Güncelle</button>
+    </div>
+}
+

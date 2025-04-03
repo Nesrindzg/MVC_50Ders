@@ -1,0 +1,30 @@
+﻿@using MVC_50Ders.Models.Entity
+@model List<tblKategoriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.kategoriID</th>
+                <td>@item.kategoriAd</td>
+                <td><a href="/Category/Delete/@item.kategoriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/GetCategory/@item.kategoriID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <a href="/Category/NewCategory/" class="btn btn-primary">Yeni Kategori Ekle</a>
+</div>

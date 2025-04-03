@@ -1,0 +1,31 @@
+﻿@using MVC_50Ders.Models.Entity
+@model List<tblMusteriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.musteriID</th>
+                <td>@item.musteriAd</td>
+                <td>@item.musteriSoyad</td>
+                <td><a href="/Customer/Delete/@item.musteriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Customer/GetCustomer/@item.musteriID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <a href="/Customer/NewCustomer/" class="btn btn-primary">Yeni Müşteri Ekle</a>
+</div>

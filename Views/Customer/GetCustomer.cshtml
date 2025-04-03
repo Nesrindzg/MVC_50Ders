@@ -1,0 +1,25 @@
+﻿@model MVC_50Ders.Models.Entity.tblMusteriler
+@{
+    ViewBag.Title = "GetCustomer";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Müşteri Bilgilerini Getir & Güncelle</h2>
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriID, "Müşteri ID")
+        @Html.TextBoxFor(m => m.musteriID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriAd, "Müşteri Ad")
+        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.musteriSoyad, "Müşteri Soyad")
+        @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-warning">Müşteriyi Güncelle </button>
+    </div>
+}

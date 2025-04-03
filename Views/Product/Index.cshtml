@@ -1,0 +1,37 @@
+﻿@using MVC_50Ders.Models.Entity
+@model List<tblUrunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Kategori ID</th>
+        <th>Marka</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.urunID</th>
+                <td>@item.urunAd</td>
+                <td>@item.tblKategoriler.kategoriAd</td> <!-- Otomatik olarak join işlemi yapıyor -->
+                <td>@item.Marka</td>
+                <td>@item.fiyat</td>
+                <td>@item.stok</td>
+                <td><a href="/Product/Delete/@item.urunID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Product/Update/@item.urunID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <a href="/Product/NewProduct/" class="btn btn-primary">Yeni Ürün Ekle</a>
+</div>
