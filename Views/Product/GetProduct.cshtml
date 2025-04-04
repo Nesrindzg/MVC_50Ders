@@ -1,0 +1,41 @@
+﻿@model MVC_50Ders.Models.Entity.tblUrunler
+@{
+    ViewBag.Title = "GetProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Ürün Bilgisi Getir</h2>
+
+@using (Html.BeginForm("Update", "Product", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.urunID, "Ürün ID")
+        @Html.TextBoxFor(m => m.urunID, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.urunAd, "Ürün Ad")
+        @Html.TextBoxFor(m => m.urunAd, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.urunKategori, "Ürün Kategorisi")
+        @*@Html.TextBoxFor(m => m.urunKategori, new { @class = "form-control" })*@
+        @*@Html.TextBoxFor(m => m.tblKategoriler.kategoriAd, new { @class = "form-control" })*@
+        @Html.DropDownListFor(m => m.tblKategoriler.kategoriID, (List<SelectListItem>)ViewBag.Kategoriler, "Seçiniz", new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Marka, "Ürün Markası")
+        @Html.TextBoxFor(m => m.Marka, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.fiyat, "Ürün Fiyatı")
+        @Html.TextBoxFor(m => m.fiyat, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.stok, "Ürün Stok Adedi")
+        @Html.TextBoxFor(m => m.stok, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-warning">Ürünü Güncelle </button>
+    </div>
+}

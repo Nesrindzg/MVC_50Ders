@@ -26,6 +26,10 @@ namespace MVC_50Ders.Controllers
         [HttpPost]
         public ActionResult NewCustomer(tblMusteriler p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("NewCustomer");
+            }
             db.tblMusteriler.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");

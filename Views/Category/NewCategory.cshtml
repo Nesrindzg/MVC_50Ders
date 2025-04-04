@@ -1,4 +1,4 @@
-﻿
+﻿@model MVC_50Ders.Models.Entity.tblKategoriler
 @{
     ViewBag.Title = "NewCategory";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -7,9 +7,14 @@
 <h2>Yeni Kategori Ekle</h2>
 <br />
 <form class="form-group" method="post">
-    <div>
+    @*<div>
         <label>Yeni Kategori Adı</label>
         <input type="text" name="kategoriAd" class="form-control" />
+    </div>*@
+    <div>
+        <label>Kategori Adı</label>
+        @Html.TextBoxFor(m => m.kategoriAd, new { @class = "form-control", placeholder = "Kategori Adı Giriniz" })
+        @Html.ValidationMessageFor(m => m.kategoriAd, "", new { @class = "text-danger bg-danger" })
     </div>
     <div style="margin-top:10px;">
         <button class="btn btn-primary">Kategori Ekle</button>

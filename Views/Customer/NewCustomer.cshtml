@@ -1,4 +1,4 @@
-﻿
+﻿@model MVC_50Ders.Models.Entity.tblMusteriler
 @{
     ViewBag.Title = "NewCustomer";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -9,12 +9,16 @@
 <form class="form-group" method="post">
     <div>
         <label>Müşteri Adı</label>
-        <input type="text" name="musteriAd" class="form-control" />
+        @*<input type="text" name="musteriAd" class="form-control" />*@
+        @Html.TextBoxFor(m => m.musteriAd, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.musteriAd, "", new { @class = "text-danger bg-danger" })
     </div>
     <br />
     <div>
         <label>Müşteri Soyadı</label>
-        <input type="text" name="musteriSoyad" class="form-control" />
+        @*<input type="text" name="musteriSoyad" class="form-control" />*@
+        @Html.TextBoxFor(m => m.musteriSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.musteriSoyad, "", new { @class = "text-danger bg-danger" })
     </div>
     <div style="margin-top:10px;">
         <button class="btn btn-primary">Müşteri Ekle</button>

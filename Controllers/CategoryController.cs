@@ -27,6 +27,10 @@ namespace MVC_50Ders.Controllers
         [HttpPost]
         public ActionResult NewCategory(tblKategoriler p)
         {
+            if (!ModelState.IsValid) // Doğrulama işlemi yapılmamışsa
+            {
+                return View("NewCategory");
+            }
             db.tblKategoriler.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");

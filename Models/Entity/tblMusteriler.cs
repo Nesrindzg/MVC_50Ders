@@ -11,7 +11,8 @@ namespace MVC_50Ders.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tblMusteriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace MVC_50Ders.Models.Entity
         }
     
         public int musteriID { get; set; }
+
+        [Required(ErrorMessage ="Müþteri Adý Boþ Geçilemez!")]
+        [StringLength(50,ErrorMessage ="Müþteri Adý En Fazla 50 Karakter Olmalýdýr")]
         public string musteriAd { get; set; }
+
+        [Required(ErrorMessage = "Müþteri Soyadý Boþ Geçilemez!")]
+        [StringLength(50, ErrorMessage = "Müþteri Soyadý En Fazla 50 Karakter Olmalýdýr")]
         public string musteriSoyad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
