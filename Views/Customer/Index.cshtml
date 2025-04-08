@@ -5,6 +5,16 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+{
+    <p class="">
+        <label>Aranacak Müşteri Adı:</label> @Html.TextBox("p")
+        <button type="submit" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span> Ara
+        </button>
+    </p>
+}
+
 <table class="table table-bordered">
     <tr>
         <th>ID</th>
@@ -34,6 +44,6 @@
 <script>
     $('.btnDeleteCustomer').click(function () {
         var id = $(this).data('id')
-        alert(id+" Numaralı Müşteri Silindi");
+        alert(id + " Numaralı Müşteri Silindi");
     });
 </script>

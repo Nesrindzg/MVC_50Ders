@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC_50Ders.Models.Entity;
-using PagedList;
-using PagedList.Mvc;
+
 
 namespace MVC_50Ders.Controllers
 {
@@ -13,10 +12,9 @@ namespace MVC_50Ders.Controllers
     {
         // GET: Product
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
-        public ActionResult Index(int sayfa=1)
+        public ActionResult Index()
         {
-            //var degerler = db.tblUrunler.ToList();
-            var degerler = db.tblUrunler.ToList().ToPagedList(sayfa, 10);
+            var degerler = db.tblUrunler.ToList();
             return View(degerler);
         }
 

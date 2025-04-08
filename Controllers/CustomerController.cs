@@ -11,10 +11,17 @@ namespace MVC_50Ders.Controllers
     {
         // GET: Customer
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var degerler = db.tblMusteriler.ToList();
-            return View(degerler);
+            var values = from d in db.tblMusteriler select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                values = values.Where(m => m.musteriAd.Contains(p));
+            }
+            return View(values.ToList());
+
+            //var degerler = db.tblMusteriler.ToList();
+            //return View(degerler);
         }
 
         [HttpGet]

@@ -1,15 +1,38 @@
-﻿@model MVC_50Ders.Models.Entity.tblSatislar
+﻿@model List<MVC_50Ders.Models.Entity.tblSatislar>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>Satışlar Sayfası</h2>
-
+<table id="tblProduct" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Satış ID</th>
+            <th>Ürün Bilgisi</th>
+            <th>Müşteri Bilgisi</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.satisID</th>
+                <td>@item.tblUrunler.urunAd</td>
+                <td>@item.tblMusteriler.musteriAd<span> </span> @item.tblMusteriler.musteriSoyad</td> 
+                <td>@item.adet</td> 
+                <td>@item.fiyat</td> 
+            </tr>
+        }
+    </tbody>
+</table>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
-    Satış Yap
+    Yeni Satış Yap
 </button>
+
+<!-- Sales Modal -->
 <div class="modal fade" id="Modal1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -17,26 +40,15 @@
                 <h3 class="modal-title">Satış Yapma Ekranı</h3>
             </div>
             <div class="modal-body">
-                <form method="post" action="/Sales/NewSales">
-                    <div class="form-group">
-                        <label>Ürün Bilgisi</label>
-                        @Html.TextBoxFor(m => m.urun, new { @class = "form-control", placeholder = "Ürün Bilgisi Giriniz" })
-                    </div>
-                    <div class="form-group">
-                        <label>Müşteri Bilgisi</label>
-                        @Html.TextBoxFor(m => m.musteri, new { @class = "form-control", placeholder = "Müşteri Bilgisi Giriniz" })
-                    </div>
-                    <div class="form-group">
-                        <label>Adet</label>
-                        @Html.TextBoxFor(m => m.adet, new { @class = "form-control", placeholder = "Ürün Adedi Giriniz" })
-                    </div>
-                    <div class="form-group">
-                        <label>Fiyat</label>
-                        @Html.TextBoxFor(m => m.fiyat, new { @class = "form-control", placeholder = "Ürün Fiyatı Giriniz" })
-                    </div>
-                    <button class="btn btn-info">Satışı Onayla</button>
-                </form>
+                <!-- Partial View çağrılıyor -->
+                @Html.Partial("_SalesModal", new MVC_50Ders.Models.Entity.tblSatislar())
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script>
+    $('#tblProduct').DataTable();
+</script>

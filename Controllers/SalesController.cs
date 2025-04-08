@@ -13,7 +13,8 @@ namespace MVC_50Ders.Controllers
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
         public ActionResult Index()
         {
-            return View();
+            var values = db.tblSatislar.ToList();
+            return View(values);
         }
 
         [HttpGet]
@@ -27,7 +28,7 @@ namespace MVC_50Ders.Controllers
         {
             db.tblSatislar.Add(p);
             db.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

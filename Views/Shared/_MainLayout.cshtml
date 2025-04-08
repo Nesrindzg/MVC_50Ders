@@ -17,15 +17,30 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MVC Stok Takip</a>
+                <a class="navbar-brand" href="/Home/Index">MVC Stok Takip</a>
             </div>
+            @{
+                var currentController = ViewContext.RouteData.Values["controller"].ToString();
+            }
+
             <ul class="nav navbar-nav">
-                <li><a href="/Category/Index">Kategoriler</a></li>
-                <li><a href="/Product/Index">Ürünler</a></li>
-                <li><a href="/Customer/Index">Müşteriler</a></li>
-                <li><a href="/Sales/Index">Satışlar</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#ModalHelp">Yardım</a></li>
+                <li class="@(currentController == "Category" ? "active" : "")">
+                    <a href="/Category/Index">Kategoriler</a>
+                </li>
+                <li class="@(currentController == "Product" ? "active" : "")">
+                    <a href="/Product/Index">Ürünler</a>
+                </li>
+                <li class="@(currentController == "Customer" ? "active" : "")">
+                    <a href="/Customer/Index">Müşteriler</a>
+                </li>
+                <li class="@(currentController == "Sales" ? "active" : "")">
+                    <a href="/Sales/Index">Satışlar</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#ModalHelp">Yardım</a>
+                </li>
             </ul>
+
         </div>
     </nav>
     <div class="container">
@@ -36,9 +51,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    
-                    <h3 class="modal-title">Yardım Penceresi 
-                        <span class="glyphicon glyphicon-info-sign text-info" style="float:right;"></span>
+                    <span data-dismiss="modal" class="btn glyphicon glyphicon-remove" style="float:right; font-size:20px;"></span>
+                    <h3 class="modal-title">
+                        Yardım Penceresi <span class="glyphicon glyphicon-info-sign text-info" style="font-size:15px;"></span>
                     </h3>
                 </div>
                 <div class="modal-body">
