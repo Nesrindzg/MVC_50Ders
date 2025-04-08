@@ -1,10 +1,13 @@
 ﻿@using MVC_50Ders.Models.Entity
-@model List<tblKategoriler>
+@*@model List<tblKategoriler>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<tblKategoriler> 
+@*PagedList çevirmek gerekiyor controller kısmında öyle kullandığımız için.*@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-
 
 <table class="table table-bordered">
     <tr>
@@ -25,6 +28,9 @@
         }
     </tbody>
 </table>
+<div class="text-center">
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+</div>
 <div class="text-center">
     <a href="/Category/NewCategory/" class="btn btn-primary">Yeni Kategori Ekle</a>
 </div>

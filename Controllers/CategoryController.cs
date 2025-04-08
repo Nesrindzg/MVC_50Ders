@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC_50Ders.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVC_50Ders.Controllers
 {
@@ -12,9 +14,10 @@ namespace MVC_50Ders.Controllers
         // GET: Category
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var values = db.tblKategoriler.ToList();
+            //var values = db.tblKategoriler.ToList();
+            var values = db.tblKategoriler.ToList().ToPagedList(sayfa, 4); // Sayfa başına 5 kayıt gösterilecek
             return View(values);
         }
 

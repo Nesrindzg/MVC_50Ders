@@ -21,7 +21,12 @@
         @Html.ValidationMessageFor(m => m.musteriSoyad, "", new { @class = "text-danger bg-danger" })
     </div>
     <div style="margin-top:10px;">
-        <button class="btn btn-primary">Müşteri Ekle</button>
+        <button class="btn btn-primary" id="btnCustomerAdd">Müşteri Ekle</button>
     </div>
+    <script>
+        $('#btnCustomerAdd').click(function () {
+            alert("Müşteri Eklendi");
+        });
+    </script>
 </form>
 

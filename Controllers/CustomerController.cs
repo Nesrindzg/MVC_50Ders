@@ -35,7 +35,7 @@ namespace MVC_50Ders.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id)   
         {
             var musteri = db.tblMusteriler.Find(id);
             db.tblMusteriler.Remove(musteri);

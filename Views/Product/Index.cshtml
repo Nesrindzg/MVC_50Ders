@@ -1,5 +1,7 @@
 ﻿@using MVC_50Ders.Models.Entity
-@model List<tblUrunler>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<tblUrunler>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -32,6 +34,9 @@
         }
     </tbody>
 </table>
+<div class="text-center">
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+</div>
 <div class="text-center">
     <a href="/Product/NewProduct/" class="btn btn-primary">Yeni Ürün Ekle</a>
 </div>

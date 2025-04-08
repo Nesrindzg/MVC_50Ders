@@ -12,6 +12,7 @@
         <th>Soyadı</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Alert</th>
     </tr>
     <tbody>
         @foreach (var item in Model)
@@ -22,6 +23,7 @@
                 <td>@item.musteriSoyad</td>
                 <td><a href="/Customer/Delete/@item.musteriID" class="btn btn-danger">Sil</a></td>
                 <td><a href="/Customer/GetCustomer/@item.musteriID" class="btn btn-success">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil Butonu", "Delete", new { id = item.musteriID }, new { @class = "btn btn-warning btnDeleteCustomer", @onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')", @data_id = item.musteriID })</td>
             </tr>
         }
     </tbody>
@@ -29,3 +31,9 @@
 <div class="text-center">
     <a href="/Customer/NewCustomer/" class="btn btn-primary">Yeni Müşteri Ekle</a>
 </div>
+<script>
+    $('.btnDeleteCustomer').click(function () {
+        var id = $(this).data('id')
+        alert(id+" Numaralı Müşteri Silindi");
+    });
+</script>

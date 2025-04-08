@@ -1,0 +1,42 @@
+﻿@model MVC_50Ders.Models.Entity.tblSatislar
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Satışlar Sayfası</h2>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Satış Yap
+</button>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Satış Yapma Ekranı</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Sales/NewSales">
+                    <div class="form-group">
+                        <label>Ürün Bilgisi</label>
+                        @Html.TextBoxFor(m => m.urun, new { @class = "form-control", placeholder = "Ürün Bilgisi Giriniz" })
+                    </div>
+                    <div class="form-group">
+                        <label>Müşteri Bilgisi</label>
+                        @Html.TextBoxFor(m => m.musteri, new { @class = "form-control", placeholder = "Müşteri Bilgisi Giriniz" })
+                    </div>
+                    <div class="form-group">
+                        <label>Adet</label>
+                        @Html.TextBoxFor(m => m.adet, new { @class = "form-control", placeholder = "Ürün Adedi Giriniz" })
+                    </div>
+                    <div class="form-group">
+                        <label>Fiyat</label>
+                        @Html.TextBoxFor(m => m.fiyat, new { @class = "form-control", placeholder = "Ürün Fiyatı Giriniz" })
+                    </div>
+                    <button class="btn btn-info">Satışı Onayla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
