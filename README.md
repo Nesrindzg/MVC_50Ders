@@ -34,11 +34,11 @@ Bu proje, ASP.NET MVC mimarisini öğrenmek ve uygulamalı olarak pekiştirmek a
 ### 📂 Kategori İşlemleri
 ![Kategori İşlemleri](img/kategori.gif)
 
-### 👥 Müşteriler
-![Müşteri Listesi](img/musteriler.gif)
-
 ### 📦 Ürünler
 ![Ürünler](img/urunler.gif)
+
+### 👥 Müşteriler
+![Müşteri Listesi](img/musteriler.gif)
 
 ### 💰 Satışlar Sayfası
 ![Satışlar](img/satislar.png)
